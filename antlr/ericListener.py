@@ -10,47 +10,47 @@ class ericListener(ParseTreeListener):
 
     # Enter a parse tree produced by ericParser#let.
     def enterLet(self, ctx:ericParser.LetContext):
-        raise NotImplementedError
+        pass
 
     # Exit a parse tree produced by ericParser#let.
     def exitLet(self, ctx:ericParser.LetContext):
-        raise NotImplementedError
+        pass
 
 
     # Enter a parse tree produced by ericParser#show.
     def enterShow(self, ctx:ericParser.ShowContext):
-        raise NotImplementedError
+        pass
 
     # Exit a parse tree produced by ericParser#show.
     def exitShow(self, ctx:ericParser.ShowContext):
-        raise NotImplementedError
+        pass
 
 
     # Enter a parse tree produced by ericParser#expression.
     def enterExpression(self, ctx:ericParser.ExpressionContext):
-        raise NotImplementedError
+        pass
 
     # Exit a parse tree produced by ericParser#expression.
     def exitExpression(self, ctx:ericParser.ExpressionContext):
-        raise NotImplementedError
+        pass
 
 
     # Enter a parse tree produced by ericParser#statement.
     def enterStatement(self, ctx:ericParser.StatementContext):
-        raise NotImplementedError
+        pass
 
     # Exit a parse tree produced by ericParser#statement.
     def exitStatement(self, ctx:ericParser.StatementContext):
-        raise NotImplementedError
+        pass
 
 
     # Enter a parse tree produced by ericParser#program.
     def enterProgram(self, ctx:ericParser.ProgramContext):
-        raise NotImplementedError
+        pass
 
     # Exit a parse tree produced by ericParser#program.
     def exitProgram(self, ctx:ericParser.ProgramContext):
-        raise NotImplementedError
+        pass
 
 
 

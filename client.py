@@ -1,16 +1,17 @@
 from antlr4 import *
 from antlr.ericParser import ericParser
 from antlr.ericLexer import ericLexer
-from listeners.gencode import GenCode
+from listeners.codegenerator import CodeGenerator
 
 import sys
 
 
 def main():
-    parser = ericParser(CommonTokenStream(ericLexer(FileStream("input.txt"))))
+    lexer = ericLexer(FileStream("input.eric"))
+    parser = ericParser(CommonTokenStream(lexer))
     tree = parser.program()
 
-    gencode = GenCode()
+    gencode = CodeGenerator()
     walker = ParseTreeWalker()
     walker.walk(gencode, tree)
 

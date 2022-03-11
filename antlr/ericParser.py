@@ -15,18 +15,18 @@ def serializedATN():
         buf.write(",\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\3\2")
         buf.write("\3\2\3\3\3\3\3\3\3\4\3\4\3\4\3\4\5\4\30\n\4\3\4\3\4\3")
         buf.write("\4\7\4\35\n\4\f\4\16\4 \13\4\3\5\3\5\5\5$\n\5\3\6\3\6")
-        buf.write("\6\6(\n\6\r\6\16\6)\3\6\2\3\6\7\2\4\6\b\n\2\3\3\2\6\b")
-        buf.write("\2,\2\f\3\2\2\2\4\20\3\2\2\2\6\27\3\2\2\2\b#\3\2\2\2\n")
-        buf.write("\'\3\2\2\2\f\r\7\6\2\2\r\16\7\3\2\2\16\17\t\2\2\2\17\3")
-        buf.write("\3\2\2\2\20\21\7\4\2\2\21\22\t\2\2\2\22\5\3\2\2\2\23\24")
-        buf.write("\b\4\1\2\24\30\7\7\2\2\25\30\7\b\2\2\26\30\7\6\2\2\27")
-        buf.write("\23\3\2\2\2\27\25\3\2\2\2\27\26\3\2\2\2\30\36\3\2\2\2")
-        buf.write("\31\32\f\6\2\2\32\33\7\5\2\2\33\35\5\6\4\7\34\31\3\2\2")
-        buf.write("\2\35 \3\2\2\2\36\34\3\2\2\2\36\37\3\2\2\2\37\7\3\2\2")
-        buf.write("\2 \36\3\2\2\2!$\5\2\2\2\"$\5\4\3\2#!\3\2\2\2#\"\3\2\2")
-        buf.write("\2$\t\3\2\2\2%(\5\6\4\2&(\5\b\5\2\'%\3\2\2\2\'&\3\2\2")
-        buf.write("\2()\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*\13\3\2\2\2\7\27\36")
-        buf.write("#\')")
+        buf.write("\6\6(\n\6\r\6\16\6)\3\6\2\3\6\7\2\4\6\b\n\2\4\3\2\7\b")
+        buf.write("\3\2\6\b\2,\2\f\3\2\2\2\4\20\3\2\2\2\6\27\3\2\2\2\b#\3")
+        buf.write("\2\2\2\n\'\3\2\2\2\f\r\7\6\2\2\r\16\7\3\2\2\16\17\t\2")
+        buf.write("\2\2\17\3\3\2\2\2\20\21\7\4\2\2\21\22\t\3\2\2\22\5\3\2")
+        buf.write("\2\2\23\24\b\4\1\2\24\30\7\7\2\2\25\30\7\b\2\2\26\30\7")
+        buf.write("\6\2\2\27\23\3\2\2\2\27\25\3\2\2\2\27\26\3\2\2\2\30\36")
+        buf.write("\3\2\2\2\31\32\f\6\2\2\32\33\7\5\2\2\33\35\5\6\4\7\34")
+        buf.write("\31\3\2\2\2\35 \3\2\2\2\36\34\3\2\2\2\36\37\3\2\2\2\37")
+        buf.write("\7\3\2\2\2 \36\3\2\2\2!$\5\2\2\2\"$\5\4\3\2#!\3\2\2\2")
+        buf.write("#\"\3\2\2\2$\t\3\2\2\2%(\5\6\4\2&(\5\b\5\2\'%\3\2\2\2")
+        buf.write("\'&\3\2\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*\13\3\2\2\2")
+        buf.write("\7\27\36#\')")
         return buf.getvalue()
 
 
@@ -78,11 +78,8 @@ class ericParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def VAR(self, i:int=None):
-            if i is None:
-                return self.getTokens(ericParser.VAR)
-            else:
-                return self.getToken(ericParser.VAR, i)
+        def VAR(self):
+            return self.getToken(ericParser.VAR, 0)
 
         def INT(self):
             return self.getToken(ericParser.INT, 0)
@@ -123,7 +120,7 @@ class ericParser ( Parser ):
             self.match(ericParser.T__0)
             self.state = 12
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ericParser.VAR) | (1 << ericParser.INT) | (1 << ericParser.STR))) != 0)):
+            if not(_la==ericParser.INT or _la==ericParser.STR):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
