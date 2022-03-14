@@ -6,9 +6,9 @@ RESULT_REGISTER = '$t0'
 
 
 def printInti(n:int):
-    # immediate int
-    printInstruction('li', args=['$v0', 1])
-    printInstruction('lw', args=[n])
+    # immediate: n is a resolved value, labeled or not
+    printInstruction('li', ['$v0', 1])
+    printInstruction('li', ['$a0', n])
     printInstruction('syscall')
 
 def printTextSegment():
@@ -16,8 +16,8 @@ def printTextSegment():
 
 def printInt(name:str):
     # labeled int
-    printInstruction('li', args=['$v0', 1])
-    printInstruction('lw', args=[name])
+    printInstruction('li', ['$v0', 1])
+    printInstruction('lw', ['$a0', name])
     printInstruction('syscall')
 
 def printAssignment(id, value=None, type='int'):
@@ -64,8 +64,9 @@ def printLabel(id, value=None, type='int'):
     line = '\t' + f'{id}:' + '\t' + MIPS_TYPES[type] + ' ' + str(value)
     print(line)
 
-def printInstruction(inst:str, args:list=[], tabs:int=1):
-    line = '\t'*tabs + inst + ','.join(args[:-1]) + args[-1]
+def printInstruction(inst:str, args:list[str]=[], tabs:int=1):
+    args = [str(x) for x in args]
+    line = '\t'*tabs + inst + ' ' + ','.join(args[:-1]) + ' ' + (args[-1] if args else '')
     print(line)
 
 def loadValues(left, right):

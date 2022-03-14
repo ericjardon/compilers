@@ -24,7 +24,7 @@ class EvalVisitor(BasicVisitor):
         # Triggered by initialization of values only.
         # Save (id:value) to internal memory
         id = ctx.ID().getText()
-        value = int(self.INT().getText())
+        value = int(ctx.INT().getText())
 
         self.memory[id] = value
         return value
