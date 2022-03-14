@@ -35,6 +35,15 @@ class BasicListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by BasicParser#reassign.
+    def enterReassign(self, ctx:BasicParser.ReassignContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#reassign.
+    def exitReassign(self, ctx:BasicParser.ReassignContext):
+        pass
+
+
     # Enter a parse tree produced by BasicParser#blank.
     def enterBlank(self, ctx:BasicParser.BlankContext):
         pass

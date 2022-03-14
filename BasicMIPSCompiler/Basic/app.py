@@ -1,22 +1,34 @@
 from antlr4 import *
-from antlr.ArithLexer import ArithLexer
-from antlr.ArithListener import ArithListener
-from antlr.ArithParser import ArithParser
+from DotDataListener import DotDataListener
+from antlr.BasicLexer import BasicLexer
+from antlr.BasicListener import BasicListener
+from antlr.BasicParser import BasicParser
 from EvalVisitor import EvalVisitor
 from antlr4.tree.Trees import Trees
 
 
 def main():
     inputt = FileStream("test.txt")
-    lexer = ArithLexer(inputt)
+    lexer = BasicLexer(inputt)
     tokens = CommonTokenStream(lexer)
 
-    parser = ArithParser(tokens)
+    parser = BasicParser(tokens)
 
     tree = parser.prog() # begin parsing at prog rule
-    eval = EvalVisitor()
-    eval.visit(tree)
 
+    # First, the walker should fetch all immediate assignments
+    # And generate the .data segment
+
+    dotData = DotDataListener()
+    walker = ParseTreeWalker()
+    walker.walk(dotData, tree)
+
+    dataSegment = dotData.getDataSegment()
+
+    # Then, we generate .text segment with the visitor 
+    # (which can assume all labels are resolved)
+    eval = EvalVisitor(dataSegment)
+    eval.visit(tree)
 
 if __name__ == '__main__':
     main()

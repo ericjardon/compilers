@@ -1,25 +1,43 @@
-from antlr.ArithVisitor import ArithVisitor
-from antlr.ArithParser import ArithParser
-
-class EvalVisitor(ArithVisitor):
+from antlr.BasicVisitor import BasicVisitor
+from antlr.BasicParser import BasicParser
+from CodeGenerator import *
+class EvalVisitor(BasicVisitor):
     memory = dict()
 
-    def visitAssign(self, ctx:ArithParser.AssignContext):
+    def __init__(self, dataSegment) -> None:
+        super().__init__()
+        # Print the .data Segment
+        printDataSegment(dataSegment)
+
+
+    def visitAssign(self, ctx:BasicParser.AssignContext):
+        # Triggered by initialization of values only.
+        # Save (id:value) to internal memory
+        id = ctx.ID().getText()
+        value = int(self.INT().getText())
+        self.memory[id] = value
+        return value
+    
+    def visitReassign(self, ctx:BasicParser.ReassignContext):
+        # Compute the value for assignment
         id = ctx.ID().getText()
         value = self.visit(ctx.expr())
-        self.memory[id] = value
+        printReAssignment(id, value)
+
+    # Our language prints any expression
+    def visitPrintExpr(self, ctx:BasicParser.PrintExprContext):
+        value = self.visit(ctx.expr())  # returns literal value even if its label
         
-        return value
-
-
-    def visitPrintExpr(self, ctx:ArithParser.PrintExprContext):
-        # Like in Clojure, print evaluated expressions
-        value = self.visit(ctx.expr())  # evaluate expr child
-        print(value)
+        if isinstance(value, int):  # print immediate int
+            printInti(value)
+        else:
+            # No Strings supported yet
+            raise NotImplementedError
+        
         return 0
     
 
-    def visitId(self, ctx:ArithParser.IdContext):
+    def visitId(self, ctx:BasicParser.IdContext):
         # If the id exists in memory return the value else return 0 (NULL)
         id = ctx.ID().getText()
         if id in self.memory:
@@ -28,11 +46,11 @@ class EvalVisitor(ArithVisitor):
             return 0
 
 
-    def visitINT(self, ctx:ArithParser.INTContext):
+    def visitINT(self, ctx:BasicParser.INTContext):
         return int(ctx.INT().getText())
 
 
-    def visitMul(self, ctx:ArithParser.MulContext):
+    def visitMul(self, ctx:BasicParser.MulContext):
         # Fetch left and right operands recursively
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
@@ -40,7 +58,7 @@ class EvalVisitor(ArithVisitor):
         return left * right
     
     
-    def visitDiv(self, ctx:ArithParser.DivContext):
+    def visitDiv(self, ctx:BasicParser.DivContext):
         # Fetch left and right operands recursively
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
@@ -48,7 +66,7 @@ class EvalVisitor(ArithVisitor):
         return left // right
 
 
-    def visitAdd(self, ctx:ArithParser.AddContext):
+    def visitAdd(self, ctx:BasicParser.AddContext):
         # Fetch left and right operands recursively
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
@@ -56,7 +74,7 @@ class EvalVisitor(ArithVisitor):
         return left + right
     
     
-    def visitSub(self, ctx:ArithParser.SubContext):
+    def visitSub(self, ctx:BasicParser.SubContext):
         # Fetch left and right operands recursively
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
@@ -64,5 +82,5 @@ class EvalVisitor(ArithVisitor):
         return left - right
     
 
-    def visitParens(self, ctx:ArithParser.ParensContext):
+    def visitParens(self, ctx:BasicParser.ParensContext):
         return self.visit(ctx.expr())

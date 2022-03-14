@@ -24,6 +24,11 @@ class BasicVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by BasicParser#reassign.
+    def visitReassign(self, ctx:BasicParser.ReassignContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by BasicParser#blank.
     def visitBlank(self, ctx:BasicParser.BlankContext):
         return self.visitChildren(ctx)
