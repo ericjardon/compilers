@@ -11,7 +11,6 @@ stat:   ifstat                     # if
     |   NEWLINE                    # blank
     ;
 
-// ifstat: IF '(' boolExpr '):' NEWLINE ('\t' stat)+;
 ifstat: WHEN '(' boolExpr '):' NEWLINE ('\t' stat);
 
 ifelsestat: IF '(' boolExpr '):' NEWLINE ('\t' stat) ELSE ':' NEWLINE ('\t' stat);
