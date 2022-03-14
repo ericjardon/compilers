@@ -17,6 +17,24 @@ class BasicListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by BasicParser#if.
+    def enterIf(self, ctx:BasicParser.IfContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#if.
+    def exitIf(self, ctx:BasicParser.IfContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#ifelse.
+    def enterIfelse(self, ctx:BasicParser.IfelseContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#ifelse.
+    def exitIfelse(self, ctx:BasicParser.IfelseContext):
+        pass
+
+
     # Enter a parse tree produced by BasicParser#printExpr.
     def enterPrintExpr(self, ctx:BasicParser.PrintExprContext):
         pass
@@ -50,6 +68,24 @@ class BasicListener(ParseTreeListener):
 
     # Exit a parse tree produced by BasicParser#blank.
     def exitBlank(self, ctx:BasicParser.BlankContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#ifstat.
+    def enterIfstat(self, ctx:BasicParser.IfstatContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#ifstat.
+    def exitIfstat(self, ctx:BasicParser.IfstatContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#ifelsestat.
+    def enterIfelsestat(self, ctx:BasicParser.IfelsestatContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#ifelsestat.
+    def exitIfelsestat(self, ctx:BasicParser.IfelsestatContext):
         pass
 
 
@@ -113,6 +149,78 @@ class BasicListener(ParseTreeListener):
 
     # Exit a parse tree produced by BasicParser#INT.
     def exitINT(self, ctx:BasicParser.INTContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#Not.
+    def enterNot(self, ctx:BasicParser.NotContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#Not.
+    def exitNot(self, ctx:BasicParser.NotContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#LessThan.
+    def enterLessThan(self, ctx:BasicParser.LessThanContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#LessThan.
+    def exitLessThan(self, ctx:BasicParser.LessThanContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#Or.
+    def enterOr(self, ctx:BasicParser.OrContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#Or.
+    def exitOr(self, ctx:BasicParser.OrContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#GreaterThan.
+    def enterGreaterThan(self, ctx:BasicParser.GreaterThanContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#GreaterThan.
+    def exitGreaterThan(self, ctx:BasicParser.GreaterThanContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#And.
+    def enterAnd(self, ctx:BasicParser.AndContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#And.
+    def exitAnd(self, ctx:BasicParser.AndContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#True.
+    def enterTrue(self, ctx:BasicParser.TrueContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#True.
+    def exitTrue(self, ctx:BasicParser.TrueContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#False.
+    def enterFalse(self, ctx:BasicParser.FalseContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#False.
+    def exitFalse(self, ctx:BasicParser.FalseContext):
+        pass
+
+
+    # Enter a parse tree produced by BasicParser#IsEqual.
+    def enterIsEqual(self, ctx:BasicParser.IsEqualContext):
+        pass
+
+    # Exit a parse tree produced by BasicParser#IsEqual.
+    def exitIsEqual(self, ctx:BasicParser.IsEqualContext):
         pass
 
 

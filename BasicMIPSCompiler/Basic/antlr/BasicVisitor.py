@@ -14,6 +14,16 @@ class BasicVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by BasicParser#if.
+    def visitIf(self, ctx:BasicParser.IfContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#ifelse.
+    def visitIfelse(self, ctx:BasicParser.IfelseContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by BasicParser#printExpr.
     def visitPrintExpr(self, ctx:BasicParser.PrintExprContext):
         return self.visitChildren(ctx)
@@ -31,6 +41,16 @@ class BasicVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by BasicParser#blank.
     def visitBlank(self, ctx:BasicParser.BlankContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#ifstat.
+    def visitIfstat(self, ctx:BasicParser.IfstatContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#ifelsestat.
+    def visitIfelsestat(self, ctx:BasicParser.IfelsestatContext):
         return self.visitChildren(ctx)
 
 
@@ -66,6 +86,46 @@ class BasicVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by BasicParser#INT.
     def visitINT(self, ctx:BasicParser.INTContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#Not.
+    def visitNot(self, ctx:BasicParser.NotContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#LessThan.
+    def visitLessThan(self, ctx:BasicParser.LessThanContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#Or.
+    def visitOr(self, ctx:BasicParser.OrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#GreaterThan.
+    def visitGreaterThan(self, ctx:BasicParser.GreaterThanContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#And.
+    def visitAnd(self, ctx:BasicParser.AndContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#True.
+    def visitTrue(self, ctx:BasicParser.TrueContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#False.
+    def visitFalse(self, ctx:BasicParser.FalseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by BasicParser#IsEqual.
+    def visitIsEqual(self, ctx:BasicParser.IsEqualContext):
         return self.visitChildren(ctx)
 
 

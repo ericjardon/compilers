@@ -7,18 +7,23 @@ from EvalVisitor import EvalVisitor
 from antlr4.tree.Trees import Trees
 import sys
 
+testNum = 3
+inputfile = lambda x : f'basic{x}.txt'
+outputfile = lambda x : f'out{x}.asm'
+
 def main():
-    inputt = FileStream("basic.txt")
+    inputt = FileStream(inputfile(testNum))
     lexer = BasicLexer(inputt)
     tokens = CommonTokenStream(lexer)
 
     parser = BasicParser(tokens)
 
     tree = parser.prog() # begin parsing at prog rule
+    print(Trees.toStringTree(tree, None, parser))
 
     # Open output file
     stdout = sys.stdout
-    with open('out.asm', 'w') as f:
+    with open(outputfile(testNum), 'w') as f:
         sys.stdout = f
 
         # First, the walker should fetch all immediate assignments

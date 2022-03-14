@@ -11,12 +11,13 @@ class DotDataListener(BasicListener):
     def exitAssign(self, ctx:BasicParser.AssignContext):
         id = ctx.ID().getText()
         value = int(ctx.INT().getText())
-
-        self.initial_values[id] = value
+        if id not in self.initial_values:
+            self.initial_values[id] = value
     
     def exitReassign(self, ctx:BasicParser.ReassignContext):
         id = ctx.ID().getText()
-        self.initial_values[id] = None
+        if id not in self.initial_values:
+            self.initial_values[id] = None
     
     def getDataSegment(self):
         return self.initial_values
