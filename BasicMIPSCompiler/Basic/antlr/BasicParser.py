@@ -1,4 +1,4 @@
-# Generated from c:\Users\ericj\Documents\ITESM-8\Compiladores\compiler-design\StartAntlr\Arith\antlr\Arith.g4 by ANTLR 4.9.3
+# Generated from c:\Users\ericj\Documents\ITESM-8\Compiladores\compiler-design\BasicMIPSCompiler\Basic\antlr\Basic.g4 by ANTLR 4.9.3
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -33,9 +33,9 @@ def serializedATN():
         return buf.getvalue()
 
 
-class ArithParser ( Parser ):
+class BasicParser ( Parser ):
 
-    grammarFileName = "Arith.g4"
+    grammarFileName = "Basic.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -87,13 +87,13 @@ class ArithParser ( Parser ):
 
         def stat(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ArithParser.StatContext)
+                return self.getTypedRuleContexts(BasicParser.StatContext)
             else:
-                return self.getTypedRuleContext(ArithParser.StatContext,i)
+                return self.getTypedRuleContext(BasicParser.StatContext,i)
 
 
         def getRuleIndex(self):
-            return ArithParser.RULE_prog
+            return BasicParser.RULE_prog
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterProg" ):
@@ -114,7 +114,7 @@ class ArithParser ( Parser ):
 
     def prog(self):
 
-        localctx = ArithParser.ProgContext(self, self._ctx, self.state)
+        localctx = BasicParser.ProgContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_prog)
         self._la = 0 # Token type
         try:
@@ -128,7 +128,7 @@ class ArithParser ( Parser ):
                 self.state = 9 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ArithParser.T__1) | (1 << ArithParser.ID) | (1 << ArithParser.INT) | (1 << ArithParser.NEWLINE))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << BasicParser.T__1) | (1 << BasicParser.ID) | (1 << BasicParser.INT) | (1 << BasicParser.NEWLINE))) != 0)):
                     break
 
         except RecognitionException as re:
@@ -149,7 +149,7 @@ class ArithParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ArithParser.RULE_stat
+            return BasicParser.RULE_stat
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -159,12 +159,12 @@ class ArithParser ( Parser ):
 
     class BlankContext(StatContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.StatContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.StatContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def NEWLINE(self):
-            return self.getToken(ArithParser.NEWLINE, 0)
+            return self.getToken(BasicParser.NEWLINE, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterBlank" ):
@@ -183,15 +183,15 @@ class ArithParser ( Parser ):
 
     class PrintExprContext(StatContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.StatContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.StatContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self):
-            return self.getTypedRuleContext(ArithParser.ExprContext,0)
+            return self.getTypedRuleContext(BasicParser.ExprContext,0)
 
         def NEWLINE(self):
-            return self.getToken(ArithParser.NEWLINE, 0)
+            return self.getToken(BasicParser.NEWLINE, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterPrintExpr" ):
@@ -210,17 +210,17 @@ class ArithParser ( Parser ):
 
     class AssignContext(StatContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.StatContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.StatContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
-            return self.getToken(ArithParser.ID, 0)
+            return self.getToken(BasicParser.ID, 0)
         def expr(self):
-            return self.getTypedRuleContext(ArithParser.ExprContext,0)
+            return self.getTypedRuleContext(BasicParser.ExprContext,0)
 
         def NEWLINE(self):
-            return self.getToken(ArithParser.NEWLINE, 0)
+            return self.getToken(BasicParser.NEWLINE, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAssign" ):
@@ -240,39 +240,39 @@ class ArithParser ( Parser ):
 
     def stat(self):
 
-        localctx = ArithParser.StatContext(self, self._ctx, self.state)
+        localctx = BasicParser.StatContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_stat)
         try:
             self.state = 20
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
-                localctx = ArithParser.PrintExprContext(self, localctx)
+                localctx = BasicParser.PrintExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 11
                 self.expr(0)
                 self.state = 12
-                self.match(ArithParser.NEWLINE)
+                self.match(BasicParser.NEWLINE)
                 pass
 
             elif la_ == 2:
-                localctx = ArithParser.AssignContext(self, localctx)
+                localctx = BasicParser.AssignContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 14
-                self.match(ArithParser.ID)
+                self.match(BasicParser.ID)
                 self.state = 15
-                self.match(ArithParser.T__0)
+                self.match(BasicParser.T__0)
                 self.state = 16
                 self.expr(0)
                 self.state = 17
-                self.match(ArithParser.NEWLINE)
+                self.match(BasicParser.NEWLINE)
                 pass
 
             elif la_ == 3:
-                localctx = ArithParser.BlankContext(self, localctx)
+                localctx = BasicParser.BlankContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 19
-                self.match(ArithParser.NEWLINE)
+                self.match(BasicParser.NEWLINE)
                 pass
 
 
@@ -294,7 +294,7 @@ class ArithParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return ArithParser.RULE_expr
+            return BasicParser.RULE_expr
 
      
         def copyFrom(self, ctx:ParserRuleContext):
@@ -303,18 +303,18 @@ class ArithParser ( Parser ):
 
     class DivContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ArithParser.ExprContext)
+                return self.getTypedRuleContexts(BasicParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ArithParser.ExprContext,i)
+                return self.getTypedRuleContext(BasicParser.ExprContext,i)
 
         def DIV(self):
-            return self.getToken(ArithParser.DIV, 0)
+            return self.getToken(BasicParser.DIV, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterDiv" ):
@@ -333,18 +333,18 @@ class ArithParser ( Parser ):
 
     class AddContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ArithParser.ExprContext)
+                return self.getTypedRuleContexts(BasicParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ArithParser.ExprContext,i)
+                return self.getTypedRuleContext(BasicParser.ExprContext,i)
 
         def ADD(self):
-            return self.getToken(ArithParser.ADD, 0)
+            return self.getToken(BasicParser.ADD, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterAdd" ):
@@ -363,18 +363,18 @@ class ArithParser ( Parser ):
 
     class SubContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ArithParser.ExprContext)
+                return self.getTypedRuleContexts(BasicParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ArithParser.ExprContext,i)
+                return self.getTypedRuleContext(BasicParser.ExprContext,i)
 
         def SUB(self):
-            return self.getToken(ArithParser.SUB, 0)
+            return self.getToken(BasicParser.SUB, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterSub" ):
@@ -393,12 +393,12 @@ class ArithParser ( Parser ):
 
     class ParensContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self):
-            return self.getTypedRuleContext(ArithParser.ExprContext,0)
+            return self.getTypedRuleContext(BasicParser.ExprContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
@@ -418,18 +418,18 @@ class ArithParser ( Parser ):
 
     class MulContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(ArithParser.ExprContext)
+                return self.getTypedRuleContexts(BasicParser.ExprContext)
             else:
-                return self.getTypedRuleContext(ArithParser.ExprContext,i)
+                return self.getTypedRuleContext(BasicParser.ExprContext,i)
 
         def MUL(self):
-            return self.getToken(ArithParser.MUL, 0)
+            return self.getToken(BasicParser.MUL, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterMul" ):
@@ -448,12 +448,12 @@ class ArithParser ( Parser ):
 
     class IdContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def ID(self):
-            return self.getToken(ArithParser.ID, 0)
+            return self.getToken(BasicParser.ID, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterId" ):
@@ -472,12 +472,12 @@ class ArithParser ( Parser ):
 
     class INTContext(ExprContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a ArithParser.ExprContext
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a BasicParser.ExprContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
         def INT(self):
-            return self.getToken(ArithParser.INT, 0)
+            return self.getToken(BasicParser.INT, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterINT" ):
@@ -498,7 +498,7 @@ class ArithParser ( Parser ):
     def expr(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = ArithParser.ExprContext(self, self._ctx, _parentState)
+        localctx = BasicParser.ExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 4
         self.enterRecursionRule(localctx, 4, self.RULE_expr, _p)
@@ -507,31 +507,31 @@ class ArithParser ( Parser ):
             self.state = 29
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [ArithParser.INT]:
-                localctx = ArithParser.INTContext(self, localctx)
+            if token in [BasicParser.INT]:
+                localctx = BasicParser.INTContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
                 self.state = 23
-                self.match(ArithParser.INT)
+                self.match(BasicParser.INT)
                 pass
-            elif token in [ArithParser.ID]:
-                localctx = ArithParser.IdContext(self, localctx)
+            elif token in [BasicParser.ID]:
+                localctx = BasicParser.IdContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 24
-                self.match(ArithParser.ID)
+                self.match(BasicParser.ID)
                 pass
-            elif token in [ArithParser.T__1]:
-                localctx = ArithParser.ParensContext(self, localctx)
+            elif token in [BasicParser.T__1]:
+                localctx = BasicParser.ParensContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 25
-                self.match(ArithParser.T__1)
+                self.match(BasicParser.T__1)
                 self.state = 26
                 self.expr(0)
                 self.state = 27
-                self.match(ArithParser.T__2)
+                self.match(BasicParser.T__2)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -549,53 +549,53 @@ class ArithParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
                     if la_ == 1:
-                        localctx = ArithParser.MulContext(self, ArithParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = BasicParser.MulContext(self, BasicParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 31
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
                         self.state = 32
-                        self.match(ArithParser.MUL)
+                        self.match(BasicParser.MUL)
                         self.state = 33
                         self.expr(8)
                         pass
 
                     elif la_ == 2:
-                        localctx = ArithParser.DivContext(self, ArithParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = BasicParser.DivContext(self, BasicParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 34
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 35
-                        self.match(ArithParser.DIV)
+                        self.match(BasicParser.DIV)
                         self.state = 36
                         self.expr(7)
                         pass
 
                     elif la_ == 3:
-                        localctx = ArithParser.AddContext(self, ArithParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = BasicParser.AddContext(self, BasicParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 37
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 38
-                        self.match(ArithParser.ADD)
+                        self.match(BasicParser.ADD)
                         self.state = 39
                         self.expr(6)
                         pass
 
                     elif la_ == 4:
-                        localctx = ArithParser.SubContext(self, ArithParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = BasicParser.SubContext(self, BasicParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 40
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 41
-                        self.match(ArithParser.SUB)
+                        self.match(BasicParser.SUB)
                         self.state = 42
                         self.expr(5)
                         pass

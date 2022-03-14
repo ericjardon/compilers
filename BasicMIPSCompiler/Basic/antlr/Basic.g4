@@ -1,4 +1,4 @@
-grammar Arith;
+grammar Basic;
 import CommonLexer;
 /** The start rule; begin parsing here. */
 prog:   stat+ ; /* entry rule */

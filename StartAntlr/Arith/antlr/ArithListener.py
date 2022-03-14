@@ -44,6 +44,33 @@ class ArithListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArithParser#Div.
+    def enterDiv(self, ctx:ArithParser.DivContext):
+        pass
+
+    # Exit a parse tree produced by ArithParser#Div.
+    def exitDiv(self, ctx:ArithParser.DivContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithParser#Add.
+    def enterAdd(self, ctx:ArithParser.AddContext):
+        pass
+
+    # Exit a parse tree produced by ArithParser#Add.
+    def exitAdd(self, ctx:ArithParser.AddContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithParser#Sub.
+    def enterSub(self, ctx:ArithParser.SubContext):
+        pass
+
+    # Exit a parse tree produced by ArithParser#Sub.
+    def exitSub(self, ctx:ArithParser.SubContext):
+        pass
+
+
     # Enter a parse tree produced by ArithParser#parens.
     def enterParens(self, ctx:ArithParser.ParensContext):
         pass
@@ -53,21 +80,12 @@ class ArithListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ArithParser#MulDiv.
-    def enterMulDiv(self, ctx:ArithParser.MulDivContext):
+    # Enter a parse tree produced by ArithParser#Mul.
+    def enterMul(self, ctx:ArithParser.MulContext):
         pass
 
-    # Exit a parse tree produced by ArithParser#MulDiv.
-    def exitMulDiv(self, ctx:ArithParser.MulDivContext):
-        pass
-
-
-    # Enter a parse tree produced by ArithParser#AddSub.
-    def enterAddSub(self, ctx:ArithParser.AddSubContext):
-        pass
-
-    # Exit a parse tree produced by ArithParser#AddSub.
-    def exitAddSub(self, ctx:ArithParser.AddSubContext):
+    # Exit a parse tree produced by ArithParser#Mul.
+    def exitMul(self, ctx:ArithParser.MulContext):
         pass
 
 

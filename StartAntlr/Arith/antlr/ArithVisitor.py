@@ -29,18 +29,28 @@ class ArithVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ArithParser#Div.
+    def visitDiv(self, ctx:ArithParser.DivContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArithParser#Add.
+    def visitAdd(self, ctx:ArithParser.AddContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ArithParser#Sub.
+    def visitSub(self, ctx:ArithParser.SubContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ArithParser#parens.
     def visitParens(self, ctx:ArithParser.ParensContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ArithParser#MulDiv.
-    def visitMulDiv(self, ctx:ArithParser.MulDivContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ArithParser#AddSub.
-    def visitAddSub(self, ctx:ArithParser.AddSubContext):
+    # Visit a parse tree produced by ArithParser#Mul.
+    def visitMul(self, ctx:ArithParser.MulContext):
         return self.visitChildren(ctx)
 
 
