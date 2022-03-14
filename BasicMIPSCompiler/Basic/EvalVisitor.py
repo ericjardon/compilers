@@ -1,6 +1,13 @@
+'''
+Class that calls CodeGenerator API to generate necessary MIPS code for a Basic program file.
+Multiple-operations on a single line are supported by the grammar, 
+but not explicitly supported by this generator yet.
+'''
+
 from antlr.BasicVisitor import BasicVisitor
 from antlr.BasicParser import BasicParser
 from CodeGenerator import *
+
 class EvalVisitor(BasicVisitor):
     memory = dict()
 
@@ -9,20 +16,27 @@ class EvalVisitor(BasicVisitor):
         # Print the .data Segment
         printDataSegment(dataSegment)
 
+    def visitProg(self, ctx:BasicParser.ProgContext):
+        printTextSegment()   
+        return self.visitChildren(ctx)
 
     def visitAssign(self, ctx:BasicParser.AssignContext):
         # Triggered by initialization of values only.
         # Save (id:value) to internal memory
         id = ctx.ID().getText()
         value = int(self.INT().getText())
+
         self.memory[id] = value
         return value
     
     def visitReassign(self, ctx:BasicParser.ReassignContext):
-        # Compute the value for assignment
+        # Print necessary MIPS code for computing and reassigning a variable
         id = ctx.ID().getText()
         value = self.visit(ctx.expr())
+        # Once expression computation is generated we can move the value to address
         printReAssignment(id, value)
+        self.memory[id] = value
+        return value
 
     # Our language prints any expression
     def visitPrintExpr(self, ctx:BasicParser.PrintExprContext):
@@ -33,9 +47,7 @@ class EvalVisitor(BasicVisitor):
         else:
             # No Strings supported yet
             raise NotImplementedError
-        
         return 0
-    
 
     def visitId(self, ctx:BasicParser.IdContext):
         # If the id exists in memory return the value else return 0 (NULL)
@@ -51,9 +63,12 @@ class EvalVisitor(BasicVisitor):
 
 
     def visitMul(self, ctx:BasicParser.MulContext):
+        # Should we print possible loadings of variables?
         # Fetch left and right operands recursively
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
+
+        printMul(left, right)
 
         return left * right
     
@@ -63,6 +78,8 @@ class EvalVisitor(BasicVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
+        printDiv(left, right)
+
         return left // right
 
 
@@ -71,6 +88,8 @@ class EvalVisitor(BasicVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
+        printAdd(left, right)
+
         return left + right
     
     
@@ -78,6 +97,8 @@ class EvalVisitor(BasicVisitor):
         # Fetch left and right operands recursively
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
+
+        printSub(left, right)
 
         return left - right
     

@@ -8,7 +8,7 @@ from antlr4.tree.Trees import Trees
 
 
 def main():
-    inputt = FileStream("test.txt")
+    inputt = FileStream("basic.txt")
     lexer = BasicLexer(inputt)
     tokens = CommonTokenStream(lexer)
 
@@ -28,7 +28,7 @@ def main():
     # Then, we generate .text segment with the visitor 
     # (which can assume all labels are resolved)
     eval = EvalVisitor(dataSegment)
-    eval.visit(tree)
+    eval.visit(tree)  # prints out all text segment
 
 if __name__ == '__main__':
     main()
