@@ -14,7 +14,7 @@ class EvalVisitor(BasicVisitor):
     def __init__(self, dataSegment) -> None:
         super().__init__()
         # Print the .data Segment
-        printDataSegment(dataSegment)
+        generateDataSegment(dataSegment)
 
     def visitProg(self, ctx:BasicParser.ProgContext):
         printTextSegment()   
@@ -34,7 +34,7 @@ class EvalVisitor(BasicVisitor):
         id = ctx.ID().getText()
         value = self.visit(ctx.expr())
         # Once expression computation is generated we can move the value to address
-        printReAssignment(id, value)
+        generateReAssignment(id, value)
         self.memory[id] = value
         return value
 
@@ -68,7 +68,7 @@ class EvalVisitor(BasicVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
-        printMul(left, right)
+        generateMul(left, right)
 
         return left * right
     
@@ -78,7 +78,7 @@ class EvalVisitor(BasicVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
-        printDiv(left, right)
+        generateDiv(left, right)
 
         return left // right
 
@@ -88,7 +88,7 @@ class EvalVisitor(BasicVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
-        printAdd(left, right)
+        generateAdd(left, right)
 
         return left + right
     
@@ -98,7 +98,7 @@ class EvalVisitor(BasicVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
 
-        printSub(left, right)
+        generateSub(left, right)
 
         return left - right
     
